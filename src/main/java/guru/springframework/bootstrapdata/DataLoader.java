@@ -150,15 +150,15 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		guacoNote.setRecipeNote("Be careful handling chiles if using. Wash your hands thoroughly after handling and do not touch your eyes or the area near your eyes with your hands for several hours.");
 		guaco.setNotes(guacoNote);
 		
-		guaco.getIngredient().add(new Ingredient("avocados", new BigDecimal(2), ripeUOM));
-		guaco.getIngredient().add(new Ingredient("salt, more to taste", new BigDecimal(1.4), teaspoonUOM));
-		guaco.getIngredient().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(1), tablespoonUOM));
-		guaco.getIngredient().add(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2),tablespoonUOM));
-		guaco.getIngredient().add(new Ingredient("chiles, stems and seeds removed, minced", new BigDecimal(2), eachUOM,guaco));
-		guaco.getIngredient().add(new Ingredient("cilantro (leaves and tender stems), finely chopped", new BigDecimal(2), tablespoonUOM));
-		guaco.getIngredient().add(new Ingredient("Tomato", new BigDecimal(2), eachUOM,guaco));
+		guaco.addIngredient(new Ingredient("avocados", new BigDecimal(2), ripeUOM));
+		guaco.addIngredient(new Ingredient("salt, more to taste", new BigDecimal(1.4), teaspoonUOM));
+		guaco.addIngredient(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(1), tablespoonUOM));
+		guaco.addIngredient(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2),tablespoonUOM));
+		guaco.addIngredient(new Ingredient("chiles, stems and seeds removed, minced", new BigDecimal(2), eachUOM));
+		guaco.addIngredient(new Ingredient("cilantro (leaves and tender stems), finely chopped", new BigDecimal(2), tablespoonUOM));
+		guaco.addIngredient(new Ingredient("Tomato", new BigDecimal(2), eachUOM));
 		
-		
+//		log.debug("Guaco Ingredient " + guaco.getIngredient());
 		guaco.getCategories().add(americanCategory);
 		guaco.getCategories().add(mexicanCategory);
 		
@@ -189,16 +189,16 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		tacoNote.setRecipeNote("Look for ancho chile powder with the Mexican ingredients at your grocery store, on buy it online. (If you can't find ancho chili powder, you replace the ancho chili, the oregano, and the cumin with 2 1/2 tablespoons regular chili powder, though the flavor won't be quite the same.)");
 		tacos.setNotes(tacoNote);
 		
-		tacos.getIngredient().add(new Ingredient("ancho chili powder", new BigDecimal(2), tablespoonUOM));
-		tacos.getIngredient().add(new Ingredient("dried oregano", new BigDecimal(1), teaspoonUOM));
-		tacos.getIngredient().add(new Ingredient("dried cumin", new BigDecimal(1), teaspoonUOM));
-		tacos.getIngredient().add(new Ingredient("sugar", new BigDecimal(1), teaspoonUOM));
-		tacos.getIngredient().add(new Ingredient("Skinless boneless chicken thighs", new BigDecimal(6), eachUOM));
-		tacos.getIngredient().add(new Ingredient("Tortillas", new BigDecimal(8), eachUOM));
-		tacos.getIngredient().add(new Ingredient("avocados, sliced", new BigDecimal(2), ripeUOM));
-		tacos.getIngredient().add(new Ingredient("cherry tomatoes", new BigDecimal(4), ripeUOM));
-		tacos.getIngredient().add(new Ingredient("Onions", new BigDecimal(1.4), eachUOM));
-		tacos.getIngredient().add(new Ingredient("olive oil", new BigDecimal(2), tablespoonUOM));
+		tacos.addIngredient(new Ingredient("ancho chili powder", new BigDecimal(2), tablespoonUOM));
+		tacos.addIngredient(new Ingredient("dried oregano", new BigDecimal(1), teaspoonUOM));
+		tacos.addIngredient(new Ingredient("dried cumin", new BigDecimal(1), teaspoonUOM));
+		tacos.addIngredient(new Ingredient("sugar", new BigDecimal(1), teaspoonUOM));
+		tacos.addIngredient(new Ingredient("Skinless boneless chicken thighs", new BigDecimal(6), eachUOM));
+		tacos.addIngredient(new Ingredient("Tortillas", new BigDecimal(8), eachUOM));
+		tacos.addIngredient(new Ingredient("avocados, sliced", new BigDecimal(2), ripeUOM));
+		tacos.addIngredient(new Ingredient("cherry tomatoes", new BigDecimal(4), ripeUOM));
+		tacos.addIngredient(new Ingredient("Onions", new BigDecimal(1.4), eachUOM));
+		tacos.addIngredient(new Ingredient("olive oil", new BigDecimal(2), tablespoonUOM));
 		
 		tacos.getCategories().add(americanCategory);
 		tacos.getCategories().add(itanialCategory);

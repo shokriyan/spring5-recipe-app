@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Recipe Home</title>
+<title>Ingredients List</title>
 
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
@@ -20,45 +17,47 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
 	integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
 	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<div class="container-fluid"
 		style="margin-top: 20px; margin-botton: 20px; margin-bottom: 20px;">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-md-6 col-lg-offset-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-md-10">
-								<h1 class="panel-title">Recipe List</h1>
+							<div class="col-md-9">
+								<h1 class="panel-title">Ingredients</h1>
 							</div>
-							<div class="col-md-2">
-								<a class="btn btn-primary" href="#" th:href="@{'recipe/new'}"
-									role="button">New Recipe</a>
+							<div class="col-md-3">
+								<a class="btn btn-primary" a href="#"
+									th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}">New
+									Ingredient</a>
 							</div>
 						</div>
 					</div>
 					<div class="panel-body">
-						<div class="table-responsive"
-							th:if="${not#lists.isEmpty(recipes)}">
+						<div class="table-responsive">
 							<table class="table table-hover">
-								<thead class="thead-inverse">
+								<thead>
 									<tr>
-										<th>RECIPE ID</th>
-										<th>DESCRIPTIONS</th>
-										<th colspan="3">Actions</th>
+										<th scope="col">INGREDIENT ID</th>
+										<th scope="col">DESCRIPTION</th>
+										<th scope="col" colspan="3">ACTIONS</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="recipe:${recipes}">
-										<td th:text="${recipe.id}" />
-										<td th:text="${recipe.description}" />
+									<tr th:each="ingredient : ${recipe.ingredient}">
+										<td th:text="${ingredient.id}">ID</td>
+										<td
+											th:text="${ingredient.amount} + ' ' + ${ingredient.uom.description} +' '+ ${ingredient.description}">Descripton</td>
 										<td><a href="#"
-											th:href="@{'recipe/'+ ${recipe.id}}+'/show'">View</a></td>
+											th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}">View</a></td>
 										<td><a href="#"
-											th:href="@{'recipe/'+ ${recipe.id}}+'/update'">Update</a></td>
+											th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
 										<td><a href="#"
-											th:href="@{'recipe/'+ ${recipe.id}}+'/delete'">Delete</a></td>
+											th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
 									</tr>
 								</tbody>
 							</table>
