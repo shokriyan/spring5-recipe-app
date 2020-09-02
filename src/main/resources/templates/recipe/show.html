@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Recipe Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Recipe Home</title>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-	integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-	crossorigin="anonymous">
-<!-- th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"> -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<!-- th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"> -->
 
-<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-	integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-	crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+		crossorigin="anonymous"></script>
 </head>
+
 <body>
 	<div class="container-fluid" style="margin-top: 20px ; margin-botton: 20px ; margin-bottom: 20px;">
 		<div class="row">
@@ -28,8 +26,17 @@
 				<div class="pannel-group">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
-							<h1 class="panel-title" th:text="${recipe.description}">Recipe
-								Description Here!</h1>
+							<div class="row">
+								<div class="col-md-9">
+									<h1 class="panel-title" th:text="${recipe.description}">Recipe
+										Description Here!</h1>
+								</div>
+								<div class="col-md-3">
+									<a class="btn btn-primary" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/image'}"
+										role="button">Upload Picture</a>
+								</div>
+							</div>
+
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -42,6 +49,13 @@
 									</ul>
 								</div>
 							</div>
+							<div class="row">
+									<div class="col-md-6 form-group">
+										<img src="../../static/images/guacamole400x400WithX.jpg"
+											th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" width="200"
+											height="200">
+									</div>
+								</div>
 							<div class="row">
 								<div class="col-md-3">
 									<h5>Prep Time:</h5>
@@ -58,7 +72,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-3">
-									<h5 >Cooktime:</h5>
+									<h5>Cooktime:</h5>
 								</div>
 								<div class="col-md-3">
 									<p th:text="${recipe.cookTime} + ' min'">30 min</p>
@@ -93,16 +107,19 @@
 									<h1 class="panel-title">Ingredients</h1>
 								</div>
 								<div class="col-md-2">
-									<a class="btn btn-primary" href="#" th:href="@{'/recipe/'+${recipe.id}+'/ingredients'}">Show</a>
+									<a class="btn btn-primary" href="#"
+										th:href="@{'/recipe/'+${recipe.id}+'/ingredients'}">Show</a>
 								</div>
 
+							</div>
 						</div>
-					</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
 									<ul th:each="ingredient:${recipe.ingredient}">
-										<li th:text="${ingredient.amount+ ' ' + ingredient.uom.description + ' - ' + ingredient.description}">1 Cup of milk</li>
+										<li
+											th:text="${ingredient.amount+ ' ' + ingredient.uom.description + ' - ' + ingredient.description}">
+											1 Cup of milk</li>
 									</ul>
 								</div>
 							</div>
@@ -137,4 +154,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
